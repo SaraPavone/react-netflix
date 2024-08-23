@@ -17,8 +17,8 @@ class MyFooter extends Component {
             </Row>
             <Row xs={1} sm={2} md={3} lg={4} className="justify-content-center mt-5">
               <Col className="footer-links">
-                <ListGroup>
-                  <ListGroup.Item><a href="#">Audio and Subtitles</a></ListGroup.Item>
+                <ListGroup >
+                  <ListGroup.Item className="liStyle"><a href="#">Audio and Subtitles</a></ListGroup.Item>
                   <ListGroup.Item><a href="#">Media Center</a></ListGroup.Item>
                   <ListGroup.Item><a href="#">Privacy</a></ListGroup.Item>
                   <ListGroup.Item><a href="#">Contact Us</a></ListGroup.Item>

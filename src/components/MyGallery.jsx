@@ -2,10 +2,9 @@ import { Component } from "react";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Container } from "react-bootstrap";
+
 
 class MyGallery extends Component {
-
     state = {
         movies: []
     }
@@ -43,20 +42,46 @@ class MyGallery extends Component {
 
     render() {
         const { title } = this.props;
+        const { movies } = this.state;
+
+    
+        const slidesToShow = Math.min(movies.length, 8);
+
         const settings = {
             dots: false,
             infinite: true,
             speed: 500,
-            slidesToShow: 6,
+            slidesToShow: slidesToShow,
             slidesToScroll: 1,
             arrows: true,
             centerMode: false,
             centerPadding: '0',
             responsive: [
                 {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: Math.min(movies.length, 6),
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false,
+                        centerPadding: '0'
+                    }
+                },
+                {
                     breakpoint: 1024,
                     settings: {
-                        slidesToShow: 5,
+                        slidesToShow: Math.min(movies.length, 4),
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false,
+                        centerPadding: '0'
+                    }
+                },
+
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: Math.min(movies.length, 4),
                         slidesToScroll: 1,
                         infinite: true,
                         dots: false,
@@ -66,7 +91,17 @@ class MyGallery extends Component {
                 {
                     breakpoint: 768,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: Math.min(movies.length, 3),
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false,
+                        centerPadding: '0'
+                    }
+                },
+                {
+                    breakpoint: 576,
+                    settings: {
+                        slidesToShow: Math.min(movies.length, 2),
                         slidesToScroll: 1,
                         infinite: true,
                         dots: false,
@@ -76,7 +111,7 @@ class MyGallery extends Component {
                 {
                     breakpoint: 480,
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: Math.min(movies.length, 1),
                         slidesToScroll: 1,
                         infinite: true,
                         dots: false,
@@ -90,13 +125,13 @@ class MyGallery extends Component {
             <div className="bg-dark mx-0" data-bs-theme="dark">
                 <h3>{title}</h3>
                 <Slider {...settings}>
-                    {this.state.movies.length > 0 ? (
-                        this.state.movies.map((movie) => (
+                    {movies.length > 0 ? (
+                        movies.map((movie) => (
                             <div key={movie.imdbID}>
                                 <img
                                     src={movie.Poster}
                                     alt={movie.Title}
-                                    style={{ width: '200px', height: 'auto' }}
+                                    style={{ width: '200px', height: '300px', objectFit: 'cover', margin: '20px' }}
                                 />
                             </div>
                         ))
@@ -104,7 +139,7 @@ class MyGallery extends Component {
                         <p>Loading Movies...</p>
                     )}
                 </Slider>
-            </ div>
+            </div>
         );
     }
 }

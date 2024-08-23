@@ -15,9 +15,9 @@ function App() {
       <MyNavbar />
     </header>
    <main>
-      <MyGallery title="Avengers" query="avengers" />
-      <MyGallery title="Hunger Games" query="hunger games"/>
-      <MyGallery title="Divergent" query="divergent"/>
+      <MyGallery title="Marvel" query="marvel" />
+      <MyGallery title="Fast and Furious" query="fast and furious"/>
+      <MyGallery title="Disney" query="disney"/>
     </main>
     <footer>
       <MyFooter />
